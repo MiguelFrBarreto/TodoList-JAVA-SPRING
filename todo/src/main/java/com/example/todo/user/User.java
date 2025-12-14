@@ -1,9 +1,16 @@
 package com.example.todo.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.todo.ToDoList.ToDoList;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,4 +32,7 @@ public class User {
     private String name;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval = true)
+    private List<ToDoList> lists = new ArrayList<>();
 }

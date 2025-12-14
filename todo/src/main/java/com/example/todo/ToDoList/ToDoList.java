@@ -1,14 +1,19 @@
-package com.example.todo.category;
+package com.example.todo.ToDoList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.todo.ToDoList.ToDoList;
+import com.example.todo.category.Category;
+import com.example.todo.task.Task;
+import com.example.todo.user.User;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,13 +28,21 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "todo_lists")
+public class ToDoList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy="category")
-    private List<ToDoList> toDoLists = new ArrayList<>();
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="category_id")
+    private Category category;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_id")
+    private User user;
+
+    @OneToMany(mappedBy="toDoList", orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<>();
 }

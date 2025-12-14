@@ -2,14 +2,18 @@ package com.example.todo.task;
 
 import java.time.Instant;
 
+import com.example.todo.ToDoList.ToDoList;
 import com.example.todo.enums.Status;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,6 +39,10 @@ public class Task {
     private Instant completionDate;
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="toDoList_id")
+    private ToDoList toDoList;
 
     public Task(String title, String description, Instant expirationDate) {
         this.title = title;
