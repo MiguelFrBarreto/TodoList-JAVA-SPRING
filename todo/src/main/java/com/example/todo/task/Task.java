@@ -34,11 +34,11 @@ public class Task {
     private String title;
     private String description;
 
-    private Instant creationDate;
+    private Instant creationDate = Instant.now();
     private Instant expirationDate;
     private Instant completionDate;
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.PENDING;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="toDoList_id")
@@ -47,8 +47,6 @@ public class Task {
     public Task(String title, String description, Instant expirationDate) {
         this.title = title;
         this.description = description;
-        this.creationDate = Instant.now();
         this.expirationDate = expirationDate;
-        this.status = Status.PENDING;
     }
 }
