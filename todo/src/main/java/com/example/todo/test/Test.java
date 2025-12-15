@@ -7,12 +7,12 @@ import java.util.Arrays;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.example.todo.ToDoList.ToDoList;
-import com.example.todo.ToDoList.ToDoListService;
 import com.example.todo.category.Category;
 import com.example.todo.category.CategoryService;
 import com.example.todo.task.Task;
 import com.example.todo.task.TaskService;
+import com.example.todo.toDoList.ToDoList;
+import com.example.todo.toDoList.ToDoListService;
 import com.example.todo.user.User;
 import com.example.todo.user.UserService;
 

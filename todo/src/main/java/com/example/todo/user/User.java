@@ -3,7 +3,7 @@ package com.example.todo.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.todo.ToDoList.ToDoList;
+import com.example.todo.toDoList.ToDoList;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

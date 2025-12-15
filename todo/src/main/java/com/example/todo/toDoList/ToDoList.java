@@ -1,4 +1,4 @@
-package com.example.todo.ToDoList;
+package com.example.todo.toDoList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import com.example.todo.category.Category;
 import com.example.todo.task.Task;
 import com.example.todo.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -37,6 +38,7 @@ public class ToDoList {
     @JoinColumn(name="category_id")
     private Category category;
 
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;

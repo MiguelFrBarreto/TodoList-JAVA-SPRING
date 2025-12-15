@@ -2,8 +2,9 @@ package com.example.todo.task;
 
 import java.time.Instant;
 
-import com.example.todo.ToDoList.ToDoList;
 import com.example.todo.enums.Status;
+import com.example.todo.toDoList.ToDoList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,6 +41,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
 
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="toDoList_id")
     private ToDoList toDoList;

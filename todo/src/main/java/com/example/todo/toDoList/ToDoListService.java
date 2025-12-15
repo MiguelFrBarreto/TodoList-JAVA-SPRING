@@ -1,4 +1,4 @@
-package com.example.todo.ToDoList;
+package com.example.todo.toDoList;
 
 import java.util.List;
 import java.util.Optional;

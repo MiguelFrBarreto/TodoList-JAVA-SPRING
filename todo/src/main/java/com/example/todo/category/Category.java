@@ -3,7 +3,8 @@ package com.example.todo.category;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.todo.ToDoList.ToDoList;
+import com.example.todo.toDoList.ToDoList;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class Category {
     private Long id;
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy="category")
     private List<ToDoList> toDoLists = new ArrayList<>();
 
