@@ -32,7 +32,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy="user", cascade=CascadeType.ALL, orphanRemoval = true)
-    private List<ToDoList> lists = new ArrayList<>();
+    private List<ToDoList> toDoLists = new ArrayList<>();
 
     public User(String name, String password, String email) {
         this.name = name;
