@@ -19,7 +19,8 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public User save(User user){
+    public User create(CreateUserDTO dto){
+        User user = new User(dto.name(), dto.password(), dto.email());
         return userRepository.save(user);
     }
 

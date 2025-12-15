@@ -13,27 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/todo/tasks")
+@RequestMapping("api/todo")
 public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    @GetMapping()
+    @GetMapping("/tasks")
     public List<Task> getAll() {
         return taskService.getAll();
     }
     
-    @GetMapping("/{id}")
+    @GetMapping("/tasks/{id}")
     public Optional<Task> getById(@PathVariable Long id) {
         return taskService.getById(id);
     }
 
-    @PostMapping("")
-    public Task save(@RequestBody Task task) {
-        return taskService.save(task);
+    @PostMapping("/lists/{listId}/tasks")
+    public Task create(@RequestBody CreateTaskDTO dto, @PathVariable Long listId) {
+        return taskService.create(dto, listId);
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/tasks/{id}")
     public void deleteById(@PathVariable Long id){
         taskService.deleteById(id);
     }

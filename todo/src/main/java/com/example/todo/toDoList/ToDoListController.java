@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/todo/lists")
+@RequestMapping("api/todo")
 public class ToDoListController {
     @Autowired
     private ToDoListService toDoListService;
@@ -28,9 +28,9 @@ public class ToDoListController {
         return toDoListService.getById(id);
     }
 
-    @PostMapping("")
-    public ToDoList save(@RequestBody ToDoList toDoList) {
-        return toDoListService.save(toDoList);
+    @PostMapping("/users/{userId}/lists")
+    public ToDoList create(@RequestBody CreateToDoListDTO dto , @PathVariable Long userId) {
+        return toDoListService.create(dto, userId);
     }
     
     @DeleteMapping("/{id}")
